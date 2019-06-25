@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom"
-import { Classify } from "../classify";
-import { Cart } from "../cart";
+import { Games } from "../games";
+import { Anli } from "../anli";
 import { Mine } from "../mine";
 import { Index } from "../index/index.js";
 
@@ -16,8 +16,8 @@ export class Home extends Component {
             <div>
                 <Switch>
                     <Route path="/home/mine" component={Mine} />
-                    <Route path="/home/classify" component={Classify} />
-                    <Route path="/home/cart" component={Cart} />
+                    <Route path="/home/games" component={Games} />
+                    <Route path="/home/anli" component={Anli} />
                     <Route path="/home/index" component={Index} />
                 </Switch>
 

@@ -75,8 +75,8 @@ export class Index extends Component {
                     initialPage={0}
                     onChange={(tab, index) => { console.log('onChange', index, tab); }}
                     onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
-                    tabBarUnderlineStyle={{ borderColor: "#00caca" }}
-                    tabBarActiveTextColor="#00caca"
+                    tabBarUnderlineStyle={{ borderColor: "#14b9c8" }}
+                    tabBarActiveTextColor="#14b9c8"
                 >
 
                     <div style={{ backgroundColor: '#fff' }}>
@@ -171,9 +171,11 @@ export class Index extends Component {
 
 
                 <WhiteSpace />
+                <Button style={{ width: 30, height: 30, borderRadius: "50%", position: "fixed", Zindex: "99999", right: 0, top: 0 }}>↑</Button>
                 <div style={{ height: 45 }}>
 
                 </div>
+
             </div>
         )
     }

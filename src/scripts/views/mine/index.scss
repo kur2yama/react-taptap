@@ -1,6 +1,9 @@
-.myCollection {
-  overflow: hidden;
-  li {
-    float: left !important;
+.mineTop {
+  overflow: hidden !important;
+  .myCollection {
+    overflow: hidden;
+    li {
+      float: left !important;
+    }
   }
 }

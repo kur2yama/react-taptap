@@ -10,12 +10,12 @@ var timer = null
 const mobileReg = /^1(3|5|7|8|9)\d{9}$/
 const codeReg = /^\d{4}$/
 
-export class Login extends Component {
+export class Register extends Component {
 
     state = {
         mobileDis: true,
         toggle: true,
-        txt: '发送验证码',
+        txt: '注册',
         count: 5,
         show: false,
         flag: true
@@ -44,7 +44,7 @@ export class Login extends Component {
                 clearInterval(timer)
                 timer = null
                 this.setState({
-                    txt: "发送验证码",
+                    txt: "注册",
                     mobileDis: false
                 })
             }
@@ -101,17 +101,24 @@ export class Login extends Component {
                 }
                 sessionStorage.userInfo = JSON.stringify(userInfo)
                 localStorage.loginMobile = mobile
+                
             } else {
                 delete sessionStorage['userInfo']
             }
         })
     }
 
+
+
+    gotoLogin = () => {
+        this.props.history.push("/login")
+    }
+
     render() {
         const { mobileDis, toggle, txt, show } = this.state
         return (
             <div style={{ backgroundColor: "#fff" }} className="loginPage slide-left">
-                <Myhead title="TapTap-登录" show="true" />
+                <Myhead title="新用户注册" show="true" />
                 <div style={{ height: 50 }}></div>
                 <div>
                     <h3 style={{ fontSize: 50, textAlign: "center", color: "#14b9c8", marginTop: 10 }}>TapTap</h3>
@@ -131,13 +138,14 @@ export class Login extends Component {
                         <WhiteSpace />
 
                         <WhiteSpace />
-                        <Button ref="btn" type="warning" onClick={this.getCode} disabled={mobileDis} className="l-btn"> {txt}</Button>
+                        <Button ref="btn" style={{ backgroundColor: "#14b9c8", color: "#fff" }} onClick={this.getCode} disabled={mobileDis} className="l-btn"> {txt}</Button>
                         <WhiteSpace />
-
-
                     </List>
-                </WingBlank>
 
+                </WingBlank>
+                <div>
+                    <p style={{ fontSize: 14, margin: 20, float: "right", color: "#14b9c8", height: 30, lineHeight: "30px" }} onClick={this.gotoLogin}><span>有账号?去登录 ></span></p>
+                </div>
 
 
                 <div className="codeInput move-in" style={{ display: show ? "block" : "none" }}>
@@ -145,7 +153,7 @@ export class Login extends Component {
                     </div>
                     <div style={{ width: "100%", height: 250, backgroundColor: "#fff" }}>
                         <div style={{ height: 50 }} >
-                            <p style={{ color: "#000", fontSize: "16px", textAlign: "center", lineHeight: "50px" }}>验证码登录</p>
+                            <p style={{ color: "#000", fontSize: "16px", textAlign: "center", lineHeight: "50px" }}>请输入验证码</p>
                         </div>
                         <WingBlank>
                             <InputItem
@@ -156,7 +164,7 @@ export class Login extends Component {
                                 onChange={this.checkCode}
                             >验证码</InputItem>
                             <WhiteSpace />
-                            <Button type="primary" disabled={toggle} onClick={this.autoLogin}>马上登录</Button>
+                            <Button type="primary" disabled={toggle} onClick={this.autoLogin}>确认</Button>
                             <WhiteSpace />
                             <Button type="warning" onClick={this.cencel}>取消</Button>
                         </WingBlank>

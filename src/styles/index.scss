@@ -11,7 +11,7 @@ html,
 body,
 #app,
 .box,
-#main{
+#main {
   width: 100vw;
   height: 100vh;
 }
@@ -40,4 +40,18 @@ body,
 
 .move-out {
   animation: zoomOutDown 0.9s;
+}
+
+.slide-left {
+  animation: slideInLeft 0.5s;
+}
+
+.slide-right {
+  animation: slideInRight 0.5s;
+}
+.bounce {
+  animation: bounce 0.5s;
+}
+.tada {
+  animation: tada 0.5s;
 }

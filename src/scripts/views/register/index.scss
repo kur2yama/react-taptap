@@ -1,0 +1,29 @@
+// .l-btn {
+//   position: absolute !important;
+//   right: 0;
+//   bottom: 68px; /*no*/
+// }
+
+.loginPage {
+  height: 100%;
+  .codeInput {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(110, 110, 110, 0.5);
+    z-index: 9999;
+  }
+  .thirdLogin {
+    overflow: hidden;
+    li {
+      float: left;
+      width: 33.33%;
+      text-align: center;
+      i {
+        display: block;
+      }
+    }
+  }
+}

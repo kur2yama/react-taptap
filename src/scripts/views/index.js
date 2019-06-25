@@ -2,6 +2,10 @@ import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import { Guide } from "./guide";
 import { Home } from "./home"
 import { Login } from "./login"
+import { Register } from "./register"
+import { Addanli } from "./addanli"
+import { AnliGameList } from "./anliGameList";
+import {EditInfo} from "./editinfo"
 
 export class IndexView extends Component {
     render() {
@@ -28,6 +32,10 @@ export class Layout extends Component {
                     <Route path="/guide" component={Guide} />
                     <Route path="/home" component={Home} />
                     <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
+                    <Route path="/addanli" component={Addanli} />
+                    <Route path="/anligamelist" component={AnliGameList} />
+                    <Route path="/editinfo" component={EditInfo} />
                     <Route render={() => (<Redirect to="/home/index" />)} />
                 </Switch>
             </div>

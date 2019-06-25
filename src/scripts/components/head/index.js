@@ -1,6 +1,6 @@
 
 import { NavBar, Icon } from 'antd-mobile';
-
+import history from "@/utils/history"
 
 
 
@@ -11,9 +11,9 @@ export class Myhead extends Component {
             <NavBar
                 mode="light"
                 icon={show && <Icon type="left" />}
-                onLeftClick={() => console.log('onLeftClick')}
+                onLeftClick={() => history.go(-1)}
                 style={{
-                    backgroundColor: '#00caca', color: '#fff', position: "fixed", right: 0, left: 0, top: 0, zIndex: 99
+                    backgroundColor: '#14b9c8', color: '#fff', position: "fixed", right: 0, left: 0, top: 0, zIndex: 99
                 }}
                 rightContent={
                     [
