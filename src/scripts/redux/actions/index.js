@@ -106,4 +106,10 @@ export const changeAnliImg = (item) => {
 
 
 
-
+export const SAVEGAMEDETAIL = "saveGameDetail"
+export const saveGameDetail = (item) => {
+  return {
+    type: SAVEGAMEDETAIL,
+    gameDetailInfo: item
+  }
+} 

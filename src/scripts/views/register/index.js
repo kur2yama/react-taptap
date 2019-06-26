@@ -95,7 +95,7 @@ export class Register extends Component {
         }).then(res => {
             console.log(res);
             if (!!res.data.type) {
-                this.props.history.push("/home/mine");
+                this.props.history.push("/home/index");
                 var userInfo = {
                     token: res.data.token
                 }

@@ -85,6 +85,20 @@ export class Login extends Component {
         })
     }
 
+
+
+    saveMobile = () => {
+        var mobile = this.refs.mobile.state.value;
+        console.log("55555555555555555555")
+
+    }
+
+
+
+
+
+
+
     autoLogin = () => {
         var mobile = this.refs.mobile.state.value;
         var code = this.refs.code.state.value;
@@ -95,10 +109,21 @@ export class Login extends Component {
         }).then(res => {
             console.log(res);
             if (!!res.data.type) {
-                this.props.history.push("/home/mine");
+                this.props.history.push("/home/index");
                 var userInfo = {
                     token: res.data.token
                 }
+
+
+
+                axios.post("/vue/saveMobile", {
+                    mobile
+                }).then(res => {
+
+                })
+
+
+
                 sessionStorage.userInfo = JSON.stringify(userInfo)
                 localStorage.loginMobile = mobile
             } else {

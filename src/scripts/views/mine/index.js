@@ -1,6 +1,6 @@
-import { Myhead } from "../../components/head";
+import { Myotherhead } from "../../components/otherhead";
 import "./index.scss"
-import { ImagePicker, WhiteSpace, Tag, Tabs, Modal } from "antd-mobile"
+import {  WhiteSpace, Tag, Tabs, Modal } from "antd-mobile"
 
 const tabs = [
     { title: "评价" },
@@ -13,23 +13,22 @@ const alert = Modal.alert
 
 
 
-var loginMobile = localStorage.loginMobile
 
 export class Mine extends Component {
     state = {
-        loginMobile: loginMobile,
+        loginMobile: localStorage.loginMobile,
         uid: "00004",
         loginImg: require("@/assets/images/mylogin.png")
     }
 
 
     componentWillMount() {
-        if (this.state.loginMobile) {
 
+        if (localStorage.loginMobile) {
 
         } else {
             alert('您还没有登录', '是否立即登录?', [
-                { text: '取消', onPress: () => this.props.history.go(-1) },
+                { text: '取消', onPress: () => this.props.history.push("/home/index") },
                 { text: '确定', onPress: () => this.props.history.push("/register") },
             ])
         }
@@ -49,7 +48,7 @@ export class Mine extends Component {
         return (
             <div className="move-in">
                 <div style={{ height: 45, width: "100%" }}></div>
-                <Myhead title="我" />
+                <Myotherhead title="我" />
                 <WhiteSpace />
                 <div style={{ width: "100%", height: 180, backgroundColor: "#fff" }} className="mineTop">
                     <div className="myImgBox" style={{ width: 100, height: 100, borderRadius: "50%", backgroundColor: "#ada", marginLeft: 20, marginTop: 20, float: "left", overflow: "hidden" }}>
@@ -57,7 +56,7 @@ export class Mine extends Component {
                     </div>
                     <div className="loginDetail" style={{ float: "left", fontSize: 20, marginLeft: 20, marginTop: 20 }}>
                         <h3 className="loginName">
-                            {"用户"+loginMobile}
+                            {"用户" + loginMobile}
                             <Tag small selected>礼仪</Tag>
                         </h3>
                         <p style={{ fontSize: 12, marginTop: 20 }}>ID:{uid}</p>
@@ -85,7 +84,7 @@ export class Mine extends Component {
                         <span style={{ float: "left", fontSize: 16, height: 40, lineHeight: "40px" }}>0</span>
                     </p>
 
-                    <p style={{ fontSize: 12, width: 80, height: 40, borderRadius: "30px", lineHeight: "40px", backgroundColor: "#14b9c8", textAlign: "center", float: "right", margin: 10, color: "#fff" }} onClick={this.gotoEdit}>编辑资料</p>
+                    <p style={{ fontSize: 12, width: 120, height: 40, borderRadius: "30px", lineHeight: "40px", backgroundColor: "#14b9c8", textAlign: "center", float: "right", margin: 10, color: "#fff" }} onClick={this.gotoEdit}>编辑资料</p>
                 </div>
 
                 <WhiteSpace />
@@ -109,3 +108,16 @@ export class Mine extends Component {
         )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

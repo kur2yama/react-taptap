@@ -28,7 +28,7 @@ export class Addanli extends Component {
         anliInfo.taptapusername = localStorage.loginName
         console.log(anliInfo)
         axios.post("/vue/addAnliInfo", { anliInfo }).then(res => {
-            this.props.history.push("/anli")
+            this.props.history.push("/home/anli")
         })
     }
 

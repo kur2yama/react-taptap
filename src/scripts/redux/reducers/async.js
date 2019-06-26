@@ -13,7 +13,8 @@ export const defaultState = {
     selectedTitle: "",
     selectedCardtags: "",
     selectedCardtags1: "",
-    selectedCardtags2: ""
+    selectedCardtags2: "",
+    gameDetailInfo: {}
 
 }
 
@@ -62,6 +63,11 @@ export default (state = defaultState, action) => {
             return { ...state, selectedImg: action.selectedImg, selectedTitle: action.selectedTitle, selectedCardtags: action.selectedCardtags, selectedCardtags1: action.selectedCardtags1, selectedCardtags2: action.selectedCardtags2 }
             break;
 
+
+
+        case "saveGameDetail":
+            return { ...state, gameDetailInfo: action.gameDetailInfo }
+            break;
 
 
         default:

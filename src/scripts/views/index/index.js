@@ -6,7 +6,8 @@ import { WhiteSpace, Button, Tabs, Card } from 'antd-mobile'
 import { Myhead } from "@/scripts/components/head"
 import axios from "@/utils/axios"
 import store from "@/scripts/redux/store";
-import { getHotGame, getNewsGame, getHotPlayGame, getSaleGame } from "../../redux/actions";
+
+import { getHotGame, getNewsGame, getHotPlayGame, getSaleGame, saveGameDetail } from "../../redux/actions";
 const tabs = [
     { title: "热游" },
     { title: "预约" },
@@ -46,25 +47,7 @@ export class Index extends Component {
         return (
             <div>
                 <Myhead title="TapTap" />
-                {/* <Button type="primary" inline size="small" onClick={this.gotoLogin}>登录</Button><WhiteSpace />
 
-                <div>
-                    <p>{msg}</p>
-                    <Button inline onClick={() => store.dispatch(changeMsg("aaaaaaaaaaaaaa"))}>修改msg</Button>
-                    <p>{count}</p>
-                    <Button inline onClick={() => store.dispatch(countAdd(9))}>countAdd</Button>
-                    <p>{city}</p>
-                    <Button inline onClick={() => store.dispatch(changeCity("因斯布鲁克"))}>改变城市</Button>
-                    <Button inline onClick={() => store.dispatch(getTypes())}>getTypes</Button>
-                    {
-                        async.types.map((item, i) => {
-                            return (
-                                <p key={i}>{item}</p>
-                            )
-                        })
-                    }
-
-                </div> */}
 
                 <WhiteSpace />
                 <div style={{ height: 45 }}>
@@ -77,13 +60,17 @@ export class Index extends Component {
                     onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                     tabBarUnderlineStyle={{ borderColor: "#14b9c8" }}
                     tabBarActiveTextColor="#14b9c8"
+                    className="indexTab"
                 >
 
-                    <div style={{ backgroundColor: '#fff' }}>
+                    <div style={{ backgroundColor: '#fff' }} >
                         {
                             this.props.hotgame.map((item, i) => {
                                 return (
-                                    <div key={i}>
+                                    <div key={i} className="slide-up" onClick={() => {
+                                        this.props.dispatch(saveGameDetail(item))
+                                        this.props.history.push("/gamedetail")
+                                    }}>
                                         <WhiteSpace size="lg" />
                                         <Card full>
                                             <Card.Header
@@ -92,9 +79,9 @@ export class Index extends Component {
                                                 extra={<span>{item.shop}</span>}
                                             />
                                             <Card.Body>
-                                                <div>{item.cardmiddlecategory}</div>
+                                                <div className="description">{item.cardmiddledescription}</div>
                                             </Card.Body>
-                                            <Card.Footer content={item.cardmiddledescription} extra={<div></div>} />
+                                            <Card.Footer content={item.cardmiddlecategory} extra={<div style={{ color: "#00caca" }}>{item.cardtags}&nbsp;&nbsp;{item.cardtags1}&nbsp;&nbsp;{item.cardtags2}</div>} />
                                         </Card>
                                     </div>
                                 )
@@ -114,9 +101,9 @@ export class Index extends Component {
                                                 extra={<span>{item.shop}</span>}
                                             />
                                             <Card.Body>
-                                                <div>{item.cardmiddlecategory}</div>
+                                                <div className="description">{item.cardmiddledescription}</div>
                                             </Card.Body>
-                                            <Card.Footer content={item.cardmiddledescription} extra={<div></div>} />
+                                            <Card.Footer content={item.cardmiddlecategory} extra={<div style={{ color: "#00caca" }}>{item.cardtags}&nbsp;&nbsp;{item.cardtags1}&nbsp;&nbsp;{item.cardtags2}</div>} />
                                         </Card>
                                     </div>
                                 )
@@ -127,7 +114,7 @@ export class Index extends Component {
                         {
                             this.props.salegame.map((item, i) => {
                                 return (
-                                    <div key={i}>
+                                    <div key={i} onClick={() => { console.log(item) }}>
                                         <WhiteSpace size="lg" />
                                         <Card full>
                                             <Card.Header
@@ -136,9 +123,9 @@ export class Index extends Component {
                                                 extra={<span>{item.shop}</span>}
                                             />
                                             <Card.Body>
-                                                <div>{item.cardmiddlecategory}</div>
+                                                <div className="description">{item.cardmiddledescription}</div>
                                             </Card.Body>
-                                            <Card.Footer content={item.cardmiddledescription} extra={<div></div>} />
+                                            <Card.Footer content={item.cardmiddlecategory} extra={<div style={{ color: "#00caca" }}>{item.cardtags}&nbsp;&nbsp;{item.cardtags1}&nbsp;&nbsp;{item.cardtags2}</div>} />
                                         </Card>
                                     </div>
                                 )
@@ -158,9 +145,9 @@ export class Index extends Component {
                                                 extra={<span>{item.shop}</span>}
                                             />
                                             <Card.Body>
-                                                <div>{item.cardmiddlecategory}</div>
+                                                <div className="description">{item.cardmiddledescription}</div>
                                             </Card.Body>
-                                            <Card.Footer content={item.cardmiddledescription} extra={<div></div>} />
+                                            <Card.Footer content={item.cardmiddlecategory} extra={<div style={{ color: "#00caca" }}>{item.cardtags}&nbsp;&nbsp;{item.cardtags1}&nbsp;&nbsp;{item.cardtags2}</div>} />
                                         </Card>
                                     </div>
                                 )
@@ -171,12 +158,15 @@ export class Index extends Component {
 
 
                 <WhiteSpace />
-                <Button style={{ width: 30, height: 30, borderRadius: "50%", position: "fixed", Zindex: "99999", right: 0, top: 0 }}>↑</Button>
+                <div className="backtop" onClick={() => { document.body.scrollTop = document.documentElement.scrollTop = 0 }}>
+                    ↑
+                </div>
+
                 <div style={{ height: 45 }}>
 
                 </div>
 
-            </div>
+            </div >
         )
     }
 }

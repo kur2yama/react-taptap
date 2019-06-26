@@ -5,7 +5,8 @@ import { Login } from "./login"
 import { Register } from "./register"
 import { Addanli } from "./addanli"
 import { AnliGameList } from "./anliGameList";
-import {EditInfo} from "./editinfo"
+import { EditInfo } from "./editinfo"
+import { GameDetail } from "./gamedetail"
 
 export class IndexView extends Component {
     render() {
@@ -36,6 +37,8 @@ export class Layout extends Component {
                     <Route path="/addanli" component={Addanli} />
                     <Route path="/anligamelist" component={AnliGameList} />
                     <Route path="/editinfo" component={EditInfo} />
+                    <Route path="/gamedetail" component={GameDetail} />
+
                     <Route render={() => (<Redirect to="/home/index" />)} />
                 </Switch>
             </div>
