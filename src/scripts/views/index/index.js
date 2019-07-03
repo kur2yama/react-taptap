@@ -37,7 +37,7 @@ export class Index extends Component {
         this.props.dispatch(getNewsGame())
         this.props.dispatch(getSaleGame())
         this.props.dispatch(getHotPlayGame())
-        console.log(this.props)
+        
 
     }
 
@@ -56,33 +56,37 @@ export class Index extends Component {
 
                 <Tabs tabs={tabs}
                     initialPage={0}
-                    onChange={(tab, index) => { console.log('onChange', index, tab); }}
-                    onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+                    onChange={(tab, index) => {  }}
+                    onTabClick={(tab, index) => {  }}
                     tabBarUnderlineStyle={{ borderColor: "#14b9c8" }}
                     tabBarActiveTextColor="#14b9c8"
                     className="indexTab"
                 >
 
-                    <div style={{ backgroundColor: '#fff' }} >
+                    <div  >
                         {
                             this.props.hotgame.map((item, i) => {
                                 return (
                                     <div key={i} className="slide-up" onClick={() => {
                                         this.props.dispatch(saveGameDetail(item))
                                         this.props.history.push("/gamedetail")
-                                    }}>
+
+                                    }}
+                                    >
+                                        <div style={{ backgroundColor: '#fff' }}>
+                                            <Card full>
+                                                <Card.Header
+                                                    title={item.title}
+                                                    thumb={item.smallimg}
+                                                    extra={<span>{item.shop}</span>}
+                                                />
+                                                <Card.Body>
+                                                    <div className="description">{item.cardmiddledescription}</div>
+                                                </Card.Body>
+                                                <Card.Footer content={item.cardmiddlecategory} extra={<div style={{ color: "#00caca" }}>{item.cardtags}&nbsp;&nbsp;{item.cardtags1}&nbsp;&nbsp;{item.cardtags2}</div>} />
+                                            </Card>
+                                        </div>
                                         <WhiteSpace size="lg" />
-                                        <Card full>
-                                            <Card.Header
-                                                title={item.title}
-                                                thumb={item.smallimg}
-                                                extra={<span>{item.shop}</span>}
-                                            />
-                                            <Card.Body>
-                                                <div className="description">{item.cardmiddledescription}</div>
-                                            </Card.Body>
-                                            <Card.Footer content={item.cardmiddlecategory} extra={<div style={{ color: "#00caca" }}>{item.cardtags}&nbsp;&nbsp;{item.cardtags1}&nbsp;&nbsp;{item.cardtags2}</div>} />
-                                        </Card>
                                     </div>
                                 )
                             })
@@ -92,7 +96,11 @@ export class Index extends Component {
                         {
                             this.props.newsgame.map((item, i) => {
                                 return (
-                                    <div key={i}>
+                                    <div key={i} onClick={() => {
+                                        this.props.dispatch(saveGameDetail(item))
+                                        this.props.history.push("/gamedetail")
+
+                                    }}>
                                         <WhiteSpace size="lg" />
                                         <Card full>
                                             <Card.Header
@@ -114,7 +122,11 @@ export class Index extends Component {
                         {
                             this.props.salegame.map((item, i) => {
                                 return (
-                                    <div key={i} onClick={() => { console.log(item) }}>
+                                    <div key={i} onClick={() => {
+                                        this.props.dispatch(saveGameDetail(item))
+                                        this.props.history.push("/gamedetail")
+
+                                    }}>
                                         <WhiteSpace size="lg" />
                                         <Card full>
                                             <Card.Header
@@ -136,7 +148,11 @@ export class Index extends Component {
                         {
                             this.props.hotplaygame.map((item, i) => {
                                 return (
-                                    <div key={i}>
+                                    <div key={i} onClick={() => {
+                                        this.props.dispatch(saveGameDetail(item))
+                                        this.props.history.push("/gamedetail")
+
+                                    }}>
                                         <WhiteSpace size="lg" />
                                         <Card full>
                                             <Card.Header
@@ -158,7 +174,7 @@ export class Index extends Component {
 
 
                 <WhiteSpace />
-                <div className="backtop" onClick={() => { document.body.scrollTop = document.documentElement.scrollTop = 0 }}>
+                <div className="backtop" onClick={() => { document.body.scrollTop = document.documentElement.scrollTop = 0;localStorage.loginMobile="15926304647" }}>
                     ↑
                 </div>
 

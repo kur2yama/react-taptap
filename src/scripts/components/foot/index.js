@@ -1,7 +1,7 @@
 import "./index.scss"
 export const foots = [
-    { txt: "首页", path: "/home/index", name: "index", icon: "icon-wenjian" },
-    { txt: "游戏库", path: "/home/games", name: "games", icon: "icon-airudiantubiaohuizhi-zhuanqu_youxi" },
+    { txt: "游戏库", path: "/home/index", name: "index", icon: "icon-wenjian" },
+    { txt: "资讯", path: "/home/games", name: "games", icon: "icon-airudiantubiaohuizhi-zhuanqu_youxi" },
     { txt: "安利墙", path: "/home/anli", name: "anli", icon: "icon-faxian" },
     { txt: "我", path: "/home/mine", name: "mine", icon: "icon-wode" }
 ]

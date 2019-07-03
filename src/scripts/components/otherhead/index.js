@@ -29,6 +29,7 @@ export class Myotherhead extends Component {
 
     logout = () => {
         localStorage.removeItem("loginMobile")
+        localStorage.removeItem("mobile")
         history.push("/home/index")
     }
 

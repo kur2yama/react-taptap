@@ -39,7 +39,7 @@ export class AnliGameList extends Component {
 
         return (
             <div>
-                <Myhead title="点击选择游戏" show="true" />
+                <Myhead title="点击选择游戏" show="true" backUrl="/addAnli"/>
                 <div style={{ height: 50 }}></div>
                 <ul style={{ overflow: "hidden" }}>
                     {

@@ -7,6 +7,9 @@ import { Addanli } from "./addanli"
 import { AnliGameList } from "./anliGameList";
 import { EditInfo } from "./editinfo"
 import { GameDetail } from "./gamedetail"
+import { Assess } from "./assess";
+import { Search } from "./search";
+import { Download } from "./download";
 
 export class IndexView extends Component {
     render() {
@@ -38,8 +41,11 @@ export class Layout extends Component {
                     <Route path="/anligamelist" component={AnliGameList} />
                     <Route path="/editinfo" component={EditInfo} />
                     <Route path="/gamedetail" component={GameDetail} />
-
+                    <Route path="/assess" component={Assess} />
+                    <Route path="/search" component={Search} />
+                    <Route path="/download" component={Download} />
                     <Route render={() => (<Redirect to="/home/index" />)} />
+
                 </Switch>
             </div>
         )

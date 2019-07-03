@@ -11,7 +11,7 @@ export default (state = defaultState, action) => {
     switch (action.type) {
 
         case ("msg"):
-            console.log("msg")
+            
             return { ...state, ...{ msg: action.msg } }
             break;
 
@@ -22,14 +22,14 @@ export default (state = defaultState, action) => {
             }
             break;
         case ("getTypes"):
-            console.log(action)
+            
             return {
                 ...state, ...{ typeList: action.typeList }
             }
             break;
 
         default:
-            console.log("default")
+            
             return state;
             break;
     }

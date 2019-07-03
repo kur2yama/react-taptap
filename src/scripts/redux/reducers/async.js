@@ -14,7 +14,11 @@ export const defaultState = {
     selectedCardtags: "",
     selectedCardtags1: "",
     selectedCardtags2: "",
-    gameDetailInfo: {}
+    gameDetailInfo: {},
+    gamesAssess: [],
+    searchResult: [],
+    productList: [],
+    isObserve: false
 
 }
 
@@ -69,6 +73,37 @@ export default (state = defaultState, action) => {
             return { ...state, gameDetailInfo: action.gameDetailInfo }
             break;
 
+
+
+        case "getAssess":
+            return { ...state, gamesAssess: action.gamesAssess }
+            break;
+
+        case "getSearch":
+            return { ...state, searchResult: action.searchResult }
+            break;
+
+        case "getProduct":
+            return { ...state, productList: action.productList }
+            break;
+
+
+
+        case "getIsObserve":
+            return { ...state, isObserve: action.isObserve }
+            break;
+
+
+
+
+        case "observeGame":
+            return { ...state, isObserve: action.isObserve }
+            break;
+
+
+        case "cancelObserve":
+            return { ...state, isObserve: action.isObserve }
+            break;
 
         default:
             return state;

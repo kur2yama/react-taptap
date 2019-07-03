@@ -40,13 +40,15 @@ export class Mine extends Component {
         this.props.history.push("/editinfo")
     }
 
-
+    goLogut=()=>{
+        
+    }
 
 
     render() {
         const { loginMobile, uid, loginImg } = this.state
         return (
-            <div className="move-in">
+            <div>
                 <div style={{ height: 45, width: "100%" }}></div>
                 <Myotherhead title="我" />
                 <WhiteSpace />
@@ -55,8 +57,8 @@ export class Mine extends Component {
                         <img src={loginImg} alt="" style={{ width: "100%" }} />
                     </div>
                     <div className="loginDetail" style={{ float: "left", fontSize: 20, marginLeft: 20, marginTop: 20 }}>
-                        <h3 className="loginName">
-                            {"用户" + loginMobile}
+                        <h3 className="loginName" style={{fontSize:18}}>
+                            {loginMobile}
                             <Tag small selected>礼仪</Tag>
                         </h3>
                         <p style={{ fontSize: 12, marginTop: 20 }}>ID:{uid}</p>
@@ -67,11 +69,11 @@ export class Mine extends Component {
                             </li>
                             <li style={{ paddingRight: 30, paddingLeft: 30, borderRight: "1px solid #aaa" }}>
                                 <p style={{ fontSize: 12 }}>0</p>
-                                <p style={{ fontSize: 14 }}>关注</p>
+                                <p style={{ fontSize: 14 }}>粉丝</p>
                             </li>
                             <li style={{ paddingLeft: 30 }}>
                                 <p style={{ fontSize: 12 }}>0</p>
-                                <p style={{ fontSize: 14 }}>关注</p>
+                                <p style={{ fontSize: 14 }}>收藏</p>
                             </li>
                         </ul>
                     </div>

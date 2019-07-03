@@ -1,7 +1,6 @@
 
 
 import axios from "axios";
-
 // 前端 数据请求  配置 header  添加 token  
 import history from "./history"
 

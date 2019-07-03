@@ -37,7 +37,7 @@ export class Addanli extends Component {
     render() {
         return (
             <div className="slide-left">
-                <Myhead title="安利一下" show="true" />
+                <Myhead title="安利一下" show="true" backUrl="/home/anli"/>
                 <div style={{ height: 50 }}></div>
                 <div>
                     <p style={{ fontSize: 16, textAlign: "center", backgroundColor: "#fff" }}>请选择安利的游戏</p>

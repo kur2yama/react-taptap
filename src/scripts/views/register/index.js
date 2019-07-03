@@ -5,7 +5,23 @@ import { Myhead } from "@/scripts/components/head"
 import "./index.scss"
 import axios from "@/utils/axios"
 var timer = null
+var auths = null;
 
+document.addEventListener("plusready", plusReady, false);
+        function plusReady() {
+            // 			getNetWork();
+
+            getAuthServices()
+
+        }
+        function getAuthServices(){
+            plus.oauth.getServices((services) => {
+                auths = services;
+                console.log(JSON.stringify(auths));
+            }, (e) => {
+                plus.nativeUI.alert("获取登录授权服务列表失败：" + JSON.stringify(e));
+            })
+        }
 
 const mobileReg = /^1(3|5|7|8|9)\d{9}$/
 const codeReg = /^\d{4}$/
@@ -99,15 +115,46 @@ export class Register extends Component {
                 var userInfo = {
                     token: res.data.token
                 }
+
+
+                axios.post("/vue/saveMobile", {
+                    mobile
+                }).then(res => {
+                    console.log(res.data.msg)
+                })
+
+
+
+
                 sessionStorage.userInfo = JSON.stringify(userInfo)
-                localStorage.loginMobile = mobile
-                
+                localStorage.loginMobile = "用户" + mobile
+                localStorage.mobile = mobile
             } else {
                 delete sessionStorage['userInfo']
             }
         })
     }
 
+    authLogin = (id) => {
+        var that = this
+        for (var s in auths) {
+            if (auths[s].id == id) {
+                var obj = auths[s];
+                obj.login(function (e) {
+                    plus.nativeUI.alert("登录认证成功!");
+                    obj.getUserInfo(function (e) {
+                        localStorage.login3rd = obj.userInfo.nickname
+                        that.props.history.push("/home/mine")
+
+                    }, function (e) {
+                        plus.nativeUI.alert("获取用户信息失败");
+                    });
+                }, function (e) {
+                    plus.nativeUI.alert("登录认证失败");
+                });
+            }
+        }
+    }
 
 
     gotoLogin = () => {
@@ -118,7 +165,7 @@ export class Register extends Component {
         const { mobileDis, toggle, txt, show } = this.state
         return (
             <div style={{ backgroundColor: "#fff" }} className="loginPage slide-left">
-                <Myhead title="新用户注册" show="true" />
+                <Myhead title="新用户注册" show="true" backUrl="/home/index"/>
                 <div style={{ height: 50 }}></div>
                 <div>
                     <h3 style={{ fontSize: 50, textAlign: "center", color: "#14b9c8", marginTop: 10 }}>TapTap</h3>
@@ -177,15 +224,15 @@ export class Register extends Component {
                     <h3 style={{ fontSize: 12, textAlign: "center", color: "#aaa" }}>第三方登录</h3>
                     <hr />
                     <ul className="thirdLogin">
-                        <li >
+                        <li onClick={()=>{this.authLogin('qq')}}>
                             <i className="iconfont icon-icon-test1" style={{ fontSize: 40, color: "#13227a" }}></i>
                             <p>假QQ</p>
                         </li>
-                        <li>
+                        <li onClick={()=>{this.authLogin('weixin')}}>
                             <i className="iconfont icon-icon-test2" style={{ fontSize: 40, color: "#62b900" }}></i>
                             <p>微信</p>
                         </li>
-                        <li>
+                        <li onClick={()=>{this.authLogin('sinaweibo')}}>
                             <i className="iconfont icon-icon-test" style={{ fontSize: 40, color: "#d81e06" }}></i>
                             <p>微博</p>
                         </li>

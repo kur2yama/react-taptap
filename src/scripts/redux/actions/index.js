@@ -112,4 +112,86 @@ export const saveGameDetail = (item) => {
     type: SAVEGAMEDETAIL,
     gameDetailInfo: item
   }
-} 
+}
+
+
+
+//获取评论
+export const GETASSESS = "getAssess"
+export const getAssess = (gameId) => {
+  return axios.get("/vue/getassess", { params: { gameId } }).then(res => {
+    return {
+      type: GETASSESS,
+      gamesAssess: res.data.result
+    }
+  })
+}
+
+
+
+//搜索
+export const GETSEARCH = "getSearch"
+export const getSearch = (keyword) => {
+  return axios.post("/vue/getsearch", { keyword }).then(res => {
+    return {
+      type: GETSEARCH,
+      searchResult: res.data.result
+    }
+  })
+}
+
+
+
+//厂家信息
+
+
+export const GETPRODUCT = "getProduct"
+export const getProduct = () => {
+  return axios.get("/vue/getproduct").then(res => {
+    return {
+      type: GETPRODUCT,
+      productList: res.data.result
+    }
+  })
+}
+
+
+
+
+//关注游戏
+
+export const OBSERVEGAME = 'observeGame'
+export const observeGame = (mobile, gameId, gameInfo)=>{
+  return axios.post("/vue/observegame",{mobile, gameId, gameInfo}).then(res=>{
+    return {
+      type:OBSERVEGAME,
+      isObserve: true
+    }
+  })
+}
+//取消关注
+
+export const CANCELOBSERVE = "cancelObserve"
+export const cancelObserve =(mobile, gameId)=>{
+  return axios.post("/vue/cancelobserve",{mobile, gameId}).then(res=>{
+    return {
+      type:CANCELOBSERVE,
+      isObserve: false
+    }
+  })
+}
+
+
+
+//判断是否关注
+export const GETISOBSERVE = "getIsObserve"
+export const getIsObserve = (mobile, gameId) => {
+  return axios.post("/vue/getisobserve", { mobile, gameId }).then(res => {
+    console.log(res.data.result)
+    var flag = res.data.result == null ? false : true
+    return {
+      type: GETISOBSERVE,
+      isObserve: flag
+    }
+  })
+}
